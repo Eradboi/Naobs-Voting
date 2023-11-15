@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} NAOBS VOTING {% endblock %}</title>'
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQid2-rBcZq8DhlwvR_k7PkaWv2OYQ2t8mAEabrBH8tvAfk8sg02Wk4cdTXzoWepTHOo2o&usqp=CAU">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        #reg-form{
+            display: grid;
+            margin: auto;
+            margin-top: 100px;
+            padding: 10px;
+            border: 1px solid rgb(255, 255, 255);
+            box-shadow: 0px 0px 4px black;
+            width: 300px;
+            overflow: hidden;
+         
+        }
+        .form-group{
+            width: 300px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .top h1{
+            font-size: 100px;
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+        }
+        .overall{
+            margin-top: 50px;
+            padding: 10px;
+            box-shadow: 0px 0px 3px solid black;
+            border-radius: 10px;
+        }
+        .post-box{
+            padding: 5px;
+            
+            border: 1px solid black;
+            border-radius: 5px;
+            max-width: 90%;
+            margin: auto;
+            margin-bottom: 10px;
+            background-color: rgb(245, 255, 245);
+        }
+        .post-box:hover{
+            background-color: rgb(188, 189, 189)
+        }
+        a{
+            text-decoration: none;
+            font-size: 19px;
+        }
+        .top{
+            margin: auto;
+        }
+        .vote-from{
+            margin-top: 50px;
+        }
+        .error{
+            text-align: center;
+            padding: 5px;
+            background-color: black;
+        }
+        .info{
+            color: aliceblue;
+        }
+        .img-box{
+            border-radius: 10px;
+        }
+        .img-box:hover{
+            border: 2px solid black;
+            background-color: white;
+        }
+        .img-box div{
+            padding: 5px;
+        }
+        .img-div{
+            width: 50%;
+        }
+        .signup{
+            margin-top: 50px;
+        }
+        .image{
+            width: 20%;
+            border-radius: 10px;
+            background-position: center;
+            border: 1px solid black;
+        }
+        .results-table{
+            margin-top: 50px;
+        }
+        .thank-you{
+            color: white;
+        }
+        @media only screen and (max-width: 768px) {
+            .overall{
+                margin-top: 100px;
+            }
+            .signup{
+            margin-top: 100px;
+        }
+        .image{
+            width: 80%;
+            border-radius: 10px;
+            background-position: center;
+            border: 1px solid black;
+        }
+        .results-table{
+            margin-top: 100px;
+        }
+        }
+    </style>
+    <link rel="shortcut icon" type="image/png" href="{% static 'naobs.png' %}">
+
+</head>
+<body>
+      <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'index' %}">Naobs Futa Chapter</a>
+          <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQid2-rBcZq8DhlwvR_k7PkaWv2OYQ2t8mAEabrBH8tvAfk8sg02Wk4cdTXzoWepTHOo2o&usqp=CAU" alt="Logo" style="border-radius: 50%;" width="20%">
+            </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Election Portal</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                    <h2>Hello, {{ request.user }}</h2>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+</body>
+{% block content %}
+{% endblock %}
+</html>

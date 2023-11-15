@@ -1,0 +1,208 @@
+{% extends 'main/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} NAOBS VOTING | HOME {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'naobs.png' %}">
+   
+</head>
+{% block content %}
+<body>
+    <div class="overall">
+
+        <div class="top">
+            <h1>POLLS</h1>
+    
+        </div>
+        <hr>
+    {% if votes %}
+    <div class="error">
+        <h2 class="thank-you">Thank You {{ request.user }} For Participating In The Election</h2>  
+    </div>
+    {% else %}
+        {% if messages %}
+        <div class="error">
+
+            <ul class="messages">
+            {% for message in messages %}
+            <li class="info">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <br>
+        {% endif %}
+            {% if message %} 
+            <div class="error">
+                <p class="info"><strong><i class="fa-solid fa-check"></i> {{ message }}</strong></p>
+            </div>
+            <br>
+            {% endif %}
+            {% if error_message %}
+            <div class="error">
+                <p class="info"><strong>{{ error_message }}</strong></p>
+            </div>
+            <br>
+            {% endif %}
+        {% if latest_question_list %}
+            <ul>
+                {% for question in latest_question_list %}
+                <div class="post-box">
+                    <h1>{{ question.question_text }}</h1>
+                    <div class="vstack gap-3">
+                    <form class="vote-from" id="SubmitForm" action="{% url 'vote' question.id %}" method="post">
+                         {% csrf_token %}
+                    <fieldset>
+                        {% for choice in question.choice_set.all %}
+                        {% if choice.choice_text == 'ZANNUS OLAYINKA (ZANOLA)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231112_1049240_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'HAMZAT ABDULSALAM (HAMZAT)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231111_1340490_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'OYEDAPO OLUWAPAMILERIN (COMFORT)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231111_1349450_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'OGUNBADE FLORENCE (JESUPELUMI)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231112_1052100_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'PAUL PRAISE DANIEL (P.P DANIEL)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231113_0700030_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'OYENIYI JOSEPH (ENGINEER JAY)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231112_1038090_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'OKETADE STEPHEN (BIGGIE)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231112_1051310_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'AKINFOLAHAN TEMIDAYO (THEMMY)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231111_1335410_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'AYEOKERE EMMANUEL (MANNIEY)' %}
+                        <div class="img-box">
+                            <div class="img-div">
+                                <img class="image" src="{% static 'Adobe_Express_20231111_1344570_1.png' %}" alt="pic">
+                            </div>
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if choice.choice_text == 'VOTE AGAINST' %}
+                        <div class="img-box">
+                            <div>
+                                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                                <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </fieldset>
+                    <input class="btn btn-success" id="submit" type="submit" value="Cast Vote">
+                    <br>
+                    {% if user.is_superuser %}
+                        <a href="{% url 'results' question.id %}">View Results</a>
+                    {% endif %}
+                </form>
+                    
+                  </div>
+            </div>
+                
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+    {% endif %}
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function(event){
+                $('#submit').val('Voting …');
+                $('SubmitForm').submit();
+            });  
+          
+        });  
+        </script> 
+</body>
+{% endblock %}
+</html>

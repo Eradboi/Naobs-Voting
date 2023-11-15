@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}NAOBS VOTING | 404 Error{% endblock %}</title>
+    <style>
+        h6{
+            color: rgb(0, 60, 255);
+        }
+        h1{
+            color: black;
+            font-size: 150px;
+            font-family: 'Agdasima', sans-serif;
+            margin-top: 50px;
+        }
+        div{
+            text-align: center;
+            padding: 10px;
+        }
+        .error-div{
+            margin-top: 100px;
+          
+          
+        }
+        
+        </style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Agdasima">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tektur">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=VT323">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chakra Petch">
+</head>
+<body>
+    <div class="error-div">
+        <h1>500</h1>
+        <small>Error</small>
+        <br>
+        <h6>Don't Ask the builder's why you are here</h6>
+        <h6><a href="{% url 'index' %}">Click to get Back to Voting</a></h6>
+    </div>
+</body>
+{% endblock %}
+</html>

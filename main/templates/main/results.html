@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} NAOBS VOTING | RESULTS {% endblock %}</title>
+</head>
+{% block content %}
+<body>
+    {% if user.is_superuser %}
+    <div class="results-table">
+
+        <h1>{{ question.question_text }}</h1>
+        <hr>
+        <div><p>{{ all }}</p></div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">S/N</th>
+                <th scope="col">Candidate</th>
+                <th scope="col">Votes</th>
+              </tr>
+            </thead>
+            {% for choice in question.choice_set.all %}
+            <tbody>
+              <tr>
+                <th scope="row">{{ choice.id }}</th>
+                <td>{{ choice.choice_text }}</td>
+                <td>{{ choice.votes }} vote{{ choice.votes|pluralize }}</td>
+              </tr>
+    
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="results-table">
+        <div class="error">
+            <p class="thank-you">Nothing To See Here, You No Be Admin</p>
+        </div>
+
+    </div>
+    {% endif %}
+</body>
+{% endblock %}
+</html>
